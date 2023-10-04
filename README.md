@@ -31,14 +31,14 @@ If you are developing a production application, we recommend updating the config
 
 ```json
 {
-	"root": true,
-	"parser": "@typescript-eslint/parser",
-	"extends": [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/eslint-recommended"
-	],
-	"plugins": ["@typescript-eslint"]
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "plugins": ["@typescript-eslint"]
 }
 ```
 
@@ -54,20 +54,20 @@ If you are developing a production application, we recommend updating the config
 ```js
 const { ESLint } = require('eslint')
 
-const removeIgnoredFiles = async (files) => {
-	const eslint = new ESLint()
-	const ignoredFiles = await Promise.all(
-		files.map((file) => eslint.isPathIgnored(file))
-	)
-	const filteredFiles = files.filter((_, i) => !ignoredFiles[i])
-	return filteredFiles.join('')
+const removeIgnoredFiles = async files => {
+  const eslint = new ESLint()
+  const ignoredFiles = await Promise.all(
+    files.map(file => eslint.isPathIgnored(file))
+  )
+  const filteredFiles = files.filter((_, i) => !ignoredFiles[i])
+  return filteredFiles.join('')
 }
 
 module.exports = {
-	'*': async (files) => {
-		const filesToLint = await removeIgnoredFiles(files)
-		return [`eslint ${filesToLint} --max-warnings=0`]
-	},
+  '*': async files => {
+    const filesToLint = await removeIgnoredFiles(files)
+    return [`eslint ${filesToLint} --max-warnings=0`]
+  }
 }
 ```
 
@@ -76,13 +76,15 @@ module.exports = {
 
 ```json
 {
-	"extends": ["@commitlint/config-conventional"],
-	"rules": {
-		"scope-empty": [2, "never"]
-	}
+  "extends": ["@commitlint/config-conventional"],
+  "rules": {
+    "scope-empty": [2, "never"]
+  }
 }
 ```
 
 - npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 - pnpm add -D commitizen cz-conventional-changelog
   新建.czrc
+
+* git config --global merge.conflictstyle diff3
