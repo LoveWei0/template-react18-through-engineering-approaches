@@ -7,26 +7,11 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## elint
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## prettier
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-* pnpm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+- pnpm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
   新建.eslintignore and .eslintrc
 
 ```json
@@ -189,77 +174,76 @@ module.exports = {
   > "no-var": 0,//禁用var，用let和const代替
   > "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],//不能有警告备注
   > "no-with": 2,//禁用with
-
-"array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
-"arrow-parens": 0,//箭头函数用小括号括起来
-"arrow-spacing": 0,//=>的前/后括号
-"accessor-pairs": 0,//在对象中使用getter/setter
-"block-scoped-var": 0,//块语句中使用var
-"brace-style": [1, "1tbs"],//大括号风格
-"callback-return": 1,//避免多次调用回调什么的
-"camelcase": 2,//强制驼峰法命名
-"comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
-"comma-spacing": 0,//逗号前后的空格
-"comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
-"complexity": [0, 11],//循环复杂度
-"computed-property-spacing": [0, "never"],//是否允许计算后的键名什么的
-"consistent-return": 0,//return 后面是否允许省略
-"consistent-this": [2, "that"],//this别名
-"constructor-super": 0,//非派生类不能调用super，派生类必须调用super
-"curly": [2, "all"],//必须使用 if(){} 中的{}
-"default-case": 2,//switch语句最后必须有default
-"dot-location": 0,//对象访问符的位置，换行的时候在行首还是行尾
-"dot-notation": [0, { "allowKeywords": true }],//避免不必要的方括号
-"eol-last": 0,//文件以单一的换行符结束
-"eqeqeq": 2,//必须使用全等
-"func-names": 0,//函数表达式必须有名字
-"func-style": [0, "declaration"],//函数风格，规定只能使用函数声明/函数表达式
-"generator-star-spacing": 0,//生成器函数\*的前后空格
-"guard-for-in": 0,//for in循环要用if语句过滤
-"handle-callback-err": 0,//nodejs 处理错误
-"id-length": 0,//变量名长度
-"indent": [2, 4],//缩进风格
-"init-declarations": 0,//声明时必须赋初值
-"key-spacing": [0, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
-"lines-around-comment": 0,//行前/行后备注
-"max-depth": [0, 4],//嵌套块深度
-"max-len": [0, 80, 4],//字符串最大长度
-"max-nested-callbacks": [0, 2],//回调嵌套深度
-"max-params": [0, 3],//函数最多只能有3个参数
-"max-statements": [0, 10],//函数内最多有几个声明
-"new-cap": 2,//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
-"new-parens": 2,//new时必须加小括号
-"newline-after-var": 2,//变量声明后是否需要空一行
-"object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
-"object-shorthand": 0,//强制对象字面量缩写语法
-"one-var": 1,//连续声明
-"operator-assignment": [0, "always"],//赋值运算符 += -=什么的
-"operator-linebreak": [2, "after"],//换行时运算符在行尾还是行首
-"padded-blocks": 0,//块语句内行首行尾是否要空行
-"prefer-const": 0,//首选const
-"prefer-spread": 0,//首选展开运算
-"prefer-reflect": 0,//首选Reflect的方法
-"quotes": [1, "single"],//引号类型 `` "" ''
-"quote-props":[2, "always"],//对象字面量中的属性名是否强制双引号
-"radix": 2,//parseInt必须指定第二个参数
-"id-match": 0,//命名检测
-"require-yield": 0,//生成器函数必须有yield
-"semi": [2, "always"],//语句强制分号结尾
-"semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
-"sort-vars": 0,//变量声明时排序
-"space-after-keywords": [0, "always"],//关键字后面是否要空一格
-"space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
-"space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
-"space-in-parens": [0, "never"],//小括号里面要不要有空格
-"space-infix-ops": 0,//中缀操作符周围要不要有空格
-"space-return-throw-case": 2,//return throw case后面要不要加空格
-"space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
-"spaced-comment": 0,//注释风格要不要有空格什么的
-"strict": 2,//使用严格模式
-"use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
-"valid-jsdoc": 0,//jsdoc规则
-"valid-typeof": 2,//必须使用合法的typeof的值
-"vars-on-top": 2,//var必须放在作用域顶部
-"wrap-iife": [2, "inside"],//立即执行函数表达式的小括号风格
-"wrap-regex": 0,//正则表达式字面量用小括号包起来
-"yoda": [2, "never"]//禁止尤达条件
+  > "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
+  > "arrow-parens": 0,//箭头函数用小括号括起来
+  > "arrow-spacing": 0,//=>的前/后括号
+  > "accessor-pairs": 0,//在对象中使用getter/setter
+  > "block-scoped-var": 0,//块语句中使用var
+  > "brace-style": [1, "1tbs"],//大括号风格
+  > "callback-return": 1,//避免多次调用回调什么的
+  > "camelcase": 2,//强制驼峰法命名
+  > "comma-dangle": [2, "never"],//对象字面量项尾不能有逗号
+  > "comma-spacing": 0,//逗号前后的空格
+  > "comma-style": [2, "last"],//逗号风格，换行时在行首还是行尾
+  > "complexity": [0, 11],//循环复杂度
+  > "computed-property-spacing": [0, "never"],//是否允许计算后的键名什么的
+  > "consistent-return": 0,//return 后面是否允许省略
+  > "consistent-this": [2, "that"],//this别名
+  > "constructor-super": 0,//非派生类不能调用super，派生类必须调用super
+  > "curly": [2, "all"],//必须使用 if(){} 中的{}
+  > "default-case": 2,//switch语句最后必须有default
+  > "dot-location": 0,//对象访问符的位置，换行的时候在行首还是行尾
+  > "dot-notation": [0, { "allowKeywords": true }],//避免不必要的方括号
+  > "eol-last": 0,//文件以单一的换行符结束
+  > "eqeqeq": 2,//必须使用全等
+  > "func-names": 0,//函数表达式必须有名字
+  > "func-style": [0, "declaration"],//函数风格，规定只能使用函数声明/函数表达式
+  > "generator-star-spacing": 0,//生成器函数\*的前后空格
+  > "guard-for-in": 0,//for in循环要用if语句过滤
+  > "handle-callback-err": 0,//nodejs 处理错误
+  > "id-length": 0,//变量名长度
+  > "indent": [2, 4],//缩进风格
+  > "init-declarations": 0,//声明时必须赋初值
+  > "key-spacing": [0, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
+  > "lines-around-comment": 0,//行前/行后备注
+  > "max-depth": [0, 4],//嵌套块深度
+  > "max-len": [0, 80, 4],//字符串最大长度
+  > "max-nested-callbacks": [0, 2],//回调嵌套深度
+  > "max-params": [0, 3],//函数最多只能有3个参数
+  > "max-statements": [0, 10],//函数内最多有几个声明
+  > "new-cap": 2,//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
+  > "new-parens": 2,//new时必须加小括号
+  > "newline-after-var": 2,//变量声明后是否需要空一行
+  > "object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
+  > "object-shorthand": 0,//强制对象字面量缩写语法
+  > "one-var": 1,//连续声明
+  > "operator-assignment": [0, "always"],//赋值运算符 += -=什么的
+  > "operator-linebreak": [2, "after"],//换行时运算符在行尾还是行首
+  > "padded-blocks": 0,//块语句内行首行尾是否要空行
+  > "prefer-const": 0,//首选const
+  > "prefer-spread": 0,//首选展开运算
+  > "prefer-reflect": 0,//首选Reflect的方法
+  > "quotes": [1, "single"],//引号类型 `` "" ''
+  > "quote-props":[2, "always"],//对象字面量中的属性名是否强制双引号
+  > "radix": 2,//parseInt必须指定第二个参数
+  > "id-match": 0,//命名检测
+  > "require-yield": 0,//生成器函数必须有yield
+  > "semi": [2, "always"],//语句强制分号结尾
+  > "semi-spacing": [0, {"before": false, "after": true}],//分号前后空格
+  > "sort-vars": 0,//变量声明时排序
+  > "space-after-keywords": [0, "always"],//关键字后面是否要空一格
+  > "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
+  > "space-before-function-paren": [0, "always"],//函数定义时括号前面要不要有空格
+  > "space-in-parens": [0, "never"],//小括号里面要不要有空格
+  > "space-infix-ops": 0,//中缀操作符周围要不要有空格
+  > "space-return-throw-case": 2,//return throw case后面要不要加空格
+  > "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
+  > "spaced-comment": 0,//注释风格要不要有空格什么的
+  > "strict": 2,//使用严格模式
+  > "use-isnan": 2,//禁止比较时使用NaN，只能用isNaN()
+  > "valid-jsdoc": 0,//jsdoc规则
+  > "valid-typeof": 2,//必须使用合法的typeof的值
+  > "vars-on-top": 2,//var必须放在作用域顶部
+  > "wrap-iife": [2, "inside"],//立即执行函数表达式的小括号风格
+  > "wrap-regex": 0,//正则表达式字面量用小括号包起来
+  > "yoda": [2, "never"]//禁止尤达条件

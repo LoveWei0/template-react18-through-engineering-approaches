@@ -1,4 +1,4 @@
-var app = {
+module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [
@@ -27,4 +27,3 @@ var app = {
     'header-max-length': [0, 'always', 72]
   }
 }
-export default app

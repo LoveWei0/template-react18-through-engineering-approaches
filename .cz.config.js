@@ -14,7 +14,7 @@ module.exports = {
     { name: 'leetcode' },
     { name: 'javascript' },
     { name: 'typescript' },
-    { name: 'Vue' },
+    { name: 'React' },
     { name: 'node' }
   ],
   // it needs to match the value for field type. Eg.: 'fix'
