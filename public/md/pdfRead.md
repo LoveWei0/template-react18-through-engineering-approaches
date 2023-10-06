@@ -1,3 +1,20 @@
+- pnpm add pdfjs-dist@3.4.120
+- pnpm add @react-pdf-viewer/core@3.12.0
+
+> - import { Worker } from '@react-pdf-viewer/core';
+
+```tsx
+ <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+
+    <!-- The viewer component will be put here -->
+    ...
+
+ </Worker>
+```
+
+### 完整示例
+
+```tsx
 import React from 'react'
 import { Button } from 'antd'
 // Import the main component
@@ -26,3 +43,6 @@ export default function App() {
     </div>
   )
 }
+```
+
+> - fileUrl是路径
