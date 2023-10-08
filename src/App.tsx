@@ -5,13 +5,24 @@ import { Viewer, Worker } from '@react-pdf-viewer/core'
 
 // Import the styles
 import '@react-pdf-viewer/core/lib/styles/index.css'
+// error-boundary
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 
-export default function App() {
+function MyFallbackComponent({ error, resetErrorBoundary }: FallbackProps) {
   return (
-    <div>
+    <div role="alert">
+      <p>出错啦</p>
+      <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>点击重试</button>
+    </div>
+  )
+}
+
+function MyComponent() {
+  return (
+    <>
       <h3 className="text-blue-600">App</h3>
       <Button>hello</Button>
-
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
         <div
           className="w-auto,h-auto"
@@ -23,6 +34,17 @@ export default function App() {
           <Viewer fileUrl="../public/work.pdf" theme={{ theme: 'dark' }} />
         </div>
       </Worker>
-    </div>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <ErrorBoundary
+      FallbackComponent={MyFallbackComponent}
+      resetKeys={['someKey']}
+    >
+      <MyComponent />
+    </ErrorBoundary>
   )
 }
