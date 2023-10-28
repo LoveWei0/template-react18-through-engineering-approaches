@@ -1,18 +1,10 @@
 import React from 'react'
 // import PdfCom from './components/PdfCoM'
-import ErrorCom from './components/ErrorCom'
+import ErrorComponent from './utils/errorManage'
 
-const LL = () => {
-  return <div>dsfa</div>
+const dd = () => {
+  return <div>d</div>
 }
-
 export default function App() {
-  return (
-    <>
-      {/* <PdfCom /> */}
-      <ErrorCom>
-        <LL />
-      </ErrorCom>
-    </>
-  )
+  return <>{ErrorComponent(dd)}</>
 }
