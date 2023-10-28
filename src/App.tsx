@@ -1,10 +1,14 @@
 import React from 'react'
 // import PdfCom from './components/PdfCoM'
-import ErrorComponent from './utils/errorManage'
+// import ErrorComponent from './utils/errorManage'
+// component
+import ShowMob from './pages/showMobs'
+import { user } from './mobx'
 
-const dd = () => {
-  return <div>d</div>
-}
 export default function App() {
-  return <>{ErrorComponent(dd)}</>
+  return (
+    <>
+      <ShowMob store={user} />
+    </>
+  )
 }

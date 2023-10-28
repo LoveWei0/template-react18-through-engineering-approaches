@@ -7,6 +7,12 @@ dependencies:
   antd:
     specifier: 5.7.3
     version: 5.7.3(react-dom@18.2.0)(react@18.2.0)
+  mobx:
+    specifier: ^6.10.2
+    version: 6.10.2
+  mobx-react-lite:
+    specifier: ^4.0.5
+    version: 4.0.5(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0)
   pdfjs-dist:
     specifier: 3.4.120
     version: 3.4.120
@@ -5191,6 +5197,35 @@ packages:
     dev: false
     optional: true
 
+  /mobx-react-lite@4.0.5(mobx@6.10.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-StfB2wxE8imKj1f6T8WWPf4lVMx3cYH9Iy60bbKXEs21+HQ4tvvfIBZfSmMXgQAefi8xYEwQIz4GN9s0d2h7dg==
+      }
+    peerDependencies:
+      mobx: ^6.9.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      mobx: 6.10.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /mobx@6.10.2:
+    resolution:
+      {
+        integrity: sha512-B1UGC3ieK3boCjnMEcZSwxqRDMdzX65H/8zOHbuTY8ZhvrIjTUoLRR2TP2bPqIgYRfb3+dUigu8yMZufNjn0LQ==
+      }
+    dev: false
+
   /ms@2.1.2:
     resolution:
       {
@@ -7769,6 +7804,17 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /user-home@2.0.0:
     resolution:
