@@ -1,47 +1,48 @@
+### 第一步
+
+```js
+pnpm add @wangeditor/editor -D
+pnpm add @wangeditor/editor-for-react -D
+```
+
+### 第二步
+
+```tsx
+// 新建RichText.tsx
+export default function RichText() {
+  return <></>
+}
+```
+
+### 使用wangeditor
+
+```tsx
 import React, { useState, useEffect } from 'react'
-// 富文本样式
-import '@wangeditor/editor/dist/css/style.css'
-// @wangeditor/editor-for-react
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
-// @wangeditor
 import type {
   IDomEditor,
   IEditorConfig,
   IToolbarConfig
 } from '@wangeditor/editor'
-
+import '@wangeditor/editor/dist/css/style.css'
 export default function RichText() {
-  // editor实例
+  // 初始化editor实例
   const [editor, setEditor] = useState<IDomEditor | null>(null)
-  // 编辑器内容
-  const [html, setHtml] = useState(`<div>H</div>`)
+  // 编辑器初始化内容
+  const [html, setHtml] = useState(`h`)
   // 工具栏配置
   const toolbarConfig: Partial<IToolbarConfig> = {}
   // 编辑器配置
   const editorConfig: Partial<IEditorConfig> = {
     placeholder: '请输入内容...'
   }
-  // 模拟异步请求的数据
-  useEffect(() => {
-    setTimeout(() => {
-      setHtml(`hello World`)
-    }, 1000)
-  }, [])
-  // 及时销毁(很重要)
-  useEffect(() => {
-    return () => {
-      if (editor == null) return
-      editor.destroy()
-      setEditor(null)
-    }
-  }, [editor])
   return (
     <>
       <div style={{ border: '1px solid #ccc', zIndex: 100 }}>
         <Toolbar
+          mode="default"
           editor={editor}
           defaultConfig={toolbarConfig}
-          mode="default"
           style={{ borderBottom: '1px solid #ccc' }}
         />
         <Editor
@@ -57,3 +58,4 @@ export default function RichText() {
     </>
   )
 }
+```
